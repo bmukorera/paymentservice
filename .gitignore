@@ -13,3 +13,6 @@ hs_err_pid*
 #removing idea generated ide files
 .idea/
 .idea/*
+
+target/
+target/*
