@@ -36,10 +36,6 @@ import static org.mockito.Mockito.when;
 @Configuration
 @WebAppConfiguration
 @PropertySource(value = {"classpath:application.properties"})
-@TestPropertySource(properties = {
-        "paynow.url=https://www.paynow.co.zw/interface/initiatetransaction",
-        "paynow.integration.key=2e2437b9-dac5-49ee-9e30-aa1419d1f6ae"
-})
 public class PaynowTest {
 
     PaynowPaymentInitialiseRequestWrapper paynowRequestWrapper;
@@ -62,7 +58,7 @@ public class PaynowTest {
                 .thenReturn("https://www.paynow.co.zw/interface/initiatetransaction");
 
         when(environment.getProperty("paynow.integration.key"))
-                .thenReturn("2e2437b9-dac5-49ee-9e30-aa1419d1f6ae");
+                .thenReturn("");
 
         paynow.setEnvironment(environment);
     paynow.setRestTemplate(restTemplate);
@@ -76,7 +72,7 @@ public class PaynowTest {
             Properties properties = new Properties();
 
             properties.setProperty("paynow.url", "https://www.paynow.co.zw/interface/initiatetransaction");
-            properties.setProperty("paynow.integration.key","2e2437b9-dac5-49ee-9e30-aa1419d1f6ae");
+            properties.setProperty("paynow.integration.key","");
 
             propertySourcesPlaceholderConfigurer.setProperties(properties);
            // propertySourcesPlaceholderConfigurer.setLocation(new ClassPathResource("application.properties"));
@@ -93,21 +89,10 @@ public class PaynowTest {
 
     private void initialiseRequest(){
         paynowRequestWrapper= new PaynowPaymentInitialiseRequestWrapper();
-        /*paynowRequestWrapper.setId(1);
-        paynowRequestWrapper.setAdditionalinfo("additionalinfo");
-        paynowRequestWrapper.setAmount(1.0);
-        paynowRequestWrapper.setAuthemail("test@bmukorera.com");
-        paynowRequestWrapper.setHash("hash");
-        paynowRequestWrapper.setReference("reference");
-        paynowRequestWrapper.setResulturl("resulturl");
-        paynowRequestWrapper.setReturnurl("returnurl");
-        paynowRequestWrapper.setStatus("status");*/
-
-
         paynowRequestWrapper.setAdditionalinfo("test payment");
         paynowRequestWrapper.setAmount(0.50);
         paynowRequestWrapper.setReturnurl("http://cleanwater.bmukorera.com:8080:/paynow/payment/update/payment2/");
-        paynowRequestWrapper.setId(2216);
+        paynowRequestWrapper.setId(0);
         paynowRequestWrapper.setReference("devtestde5");
         paynowRequestWrapper.setResulturl("http://cleanwater.bmukorera.com:8080:/paynow/payment/update/payment2/");
         paynowRequestWrapper.setStatus("Message");
