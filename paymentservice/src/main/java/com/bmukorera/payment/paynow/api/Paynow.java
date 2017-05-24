@@ -37,6 +37,13 @@ public class Paynow implements PaynowUtilService {
         this.environment = environment;
     }
 
+    /**
+    * This method is called to initialise a payment request with paynow,
+    * It returns a response wrapper with the browserurl the customer is to be redirected to
+    * to complete the payment
+    * @param paynowWrapper input of type PaynowPaymentInitialiseRequestWrapper
+    * @return PaynowResponseWrapper returns response in the form of the object PaynowResponseWrapper
+     */
     public PaynowResponseWrapper postPaynowPaymentRequest(PaynowPaymentInitialiseRequestWrapper paynowWrapper) {
         PaynowResponseWrapper paynowResponseWrapper = null;
         try {
@@ -47,8 +54,8 @@ public class Paynow implements PaynowUtilService {
             multiValueMap.add("amount", paynowWrapper.getAmount() + "");
             multiValueMap.add("id", paynowWrapper.getId() + "");
             multiValueMap.add("additionalinfo", paynowWrapper.getAdditionalinfo());
-            multiValueMap.add("authemail", "");
-            multiValueMap.add("status", paynowWrapper.getStatus());
+            multiValueMap.add("authemail", paynowWrapper.getAuthemail());
+            multiValueMap.add("status", "Message");
             String hash = generateTwoWayHash(multiValueMap, environment.getProperty("paynow.integration.key"));
             multiValueMap.add("hash", hash);
             String restResponse = restTemplate.postForObject(environment.getProperty("paynow.url.initialise.transanction"), multiValueMap, String.class);
@@ -64,6 +71,12 @@ public class Paynow implements PaynowUtilService {
         return StringUtil.generateMapFromList(StringUtil.splitStringByTag(paynowResponseString,"&") ,"=" );
     }
 
+    /**
+    * This method is used to poll for an update on a payment that has been done
+    *@return  PaynowPaymentUpdateWrapper object
+    * @param pollurl, A String parameter of the poll url that is returned when the payment initialisation is done
+    *
+     */
     public PaynowPaymentUpdateWrapper postPollRequest(String pollurl){
         String restResponse = restTemplate.postForObject(pollurl,new LinkedMultiValueMap<String, Object>(),String.class);
         LOGGER.info("response from paynow {} ",restResponse);

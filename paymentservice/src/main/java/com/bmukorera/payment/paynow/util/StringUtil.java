@@ -9,7 +9,6 @@ public class StringUtil {
 	public static String getShortName(String projectName){
 		String shortName ="";
 		String [] tokens = projectName.split(" ");
-		
 		switch(tokens.length){
 		case 1:
 			shortName=projectName.trim();
@@ -20,15 +19,10 @@ public class StringUtil {
 		case 3:
 			shortName=tokens[0]+"_"+tokens[2];
 			break;
-			
 		default:
 			shortName=tokens[0]+"_"+tokens[2];
 			break;
 		}
-			
-		
-		
-		
 		return shortName;
 		
 	}

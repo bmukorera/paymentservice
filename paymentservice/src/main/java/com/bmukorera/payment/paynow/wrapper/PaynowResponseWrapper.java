@@ -6,8 +6,11 @@ import java.io.Serializable;
  * Created by bmukorera on 5/1/2017.
  */
 public class PaynowResponseWrapper implements Serializable{
+
     private String browserurl;
+
     private String pollurl;
+
     private String status;
     private String hash;
 
@@ -18,6 +21,11 @@ public class PaynowResponseWrapper implements Serializable{
         this.hash = hash;
     }
 
+    /**
+     * The URL on Paynow that the merchant site will redirect the
+     *Customer’s browser to. Upon redirect the Customer will perform
+     *their transaction
+     */
     public String getBrowserurl() {
         return browserurl;
     }
@@ -25,7 +33,10 @@ public class PaynowResponseWrapper implements Serializable{
     public void setBrowserurl(String browserurl) {
         this.browserurl = browserurl;
     }
-
+    /**
+     * The URL on Paynow the merchant site can poll to confirm the
+     *transaction’s current status
+     */
     public String getPollurl() {
         return pollurl;
     }

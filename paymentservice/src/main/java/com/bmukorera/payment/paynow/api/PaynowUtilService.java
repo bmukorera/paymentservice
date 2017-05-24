@@ -1,6 +1,7 @@
 package com.bmukorera.payment.paynow.api;
 
 import com.bmukorera.payment.paynow.wrapper.PaynowPaymentInitialiseRequestWrapper;
+import com.bmukorera.payment.paynow.wrapper.PaynowPaymentUpdateWrapper;
 import com.bmukorera.payment.paynow.wrapper.PaynowResponseWrapper;
 
 /**
@@ -8,4 +9,5 @@ import com.bmukorera.payment.paynow.wrapper.PaynowResponseWrapper;
  */
 public interface PaynowUtilService {
      PaynowResponseWrapper postPaynowPaymentRequest(PaynowPaymentInitialiseRequestWrapper paynowWrapper);
+     PaynowPaymentUpdateWrapper postPollRequest(String pollurl);
 }
