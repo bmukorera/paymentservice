@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "paynow",
+      "type": "com.yourdomain.autoconfigure.PaynowProperties",
+      "sourceType": "com.yourdomain.autoconfigure.PaynowProperties"
+    },
+    {
+      "name": "paynow.integration",
+      "type": "com.yourdomain.autoconfigure.PaynowProperties$Integration",
+      "sourceType": "com.yourdomain.autoconfigure.PaynowProperties",
+      "sourceMethod": "getIntegration()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "paynow.integration.id",
+      "type": "java.lang.String",
+      "description": "Integration ID shown to the merchant in the “3rd Party Site or Link Profile” area of “Receive Payment Links” section of “Sell or Receive” on Paynow.",
+      "sourceType": "com.yourdomain.autoconfigure.PaynowProperties$Integration"
+    },
+    {
+      "name": "paynow.integration.key",
+      "type": "java.lang.String",
+      "description": "Integration key sent to the merchant via email after requesting it in the “3rd Party Site or Link Profile” area of “Receive Payment Links” section of “Sell or Receive” on Paynow.",
+      "sourceType": "com.yourdomain.autoconfigure.PaynowProperties$Integration"
+    },
+    {
+      "name": "paynow.result-url",
+      "type": "java.lang.String",
+      "description": "The URL on the merchant website Paynow will post transaction results to. It is recommended this URL contains enough information for the merchant site to identify the transaction.",
+      "sourceType": "com.yourdomain.autoconfigure.PaynowProperties"
+    },
+    {
+      "name": "paynow.return-url",
+      "type": "java.lang.String",
+      "description": "The URL on the merchant website the customer will be redirected to by Paynow after the transaction has been processed. It is recommended this URL contains enough information for the merchant site to identify the transaction.",
+      "sourceType": "com.yourdomain.autoconfigure.PaynowProperties"
+    }
+  ],
+  "hints": []
+}
